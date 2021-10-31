@@ -42,7 +42,7 @@ bot.on('ready', () => {
   bot.user.setActivity(`😀`);
 
   // Run the lookup loader
-  coinGeckoCmds.loadLookupJson();
+  // coinGeckoCmds.loadLookupJson();
 
   bot.guilds.cache.each(guild => guildMeCache.push(guild.me));
 
