@@ -70,4 +70,4 @@ client.on('guildCreate', guild => {
     console.log(`New server has added the client! Name: ${guild.name}`)
 })
 
-client.login(process.env.client_KEY)
+client.login(process.env.BOT_TOKEN)
