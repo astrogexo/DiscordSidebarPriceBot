@@ -70,10 +70,11 @@ async function getPrice() {
             dex = 'FreeRiver';
             break;
         case 3: 
-            dex = 'Sushi'
+            dex = 'Sushi';
+            break;
         default:
-            dex = 'SolarBeam'
-        break
+            dex = 'SolarBeam';
+            break;
     }
 
     if (PriceFeed_Source < 4) {
