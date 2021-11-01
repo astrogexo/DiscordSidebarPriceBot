@@ -84,7 +84,6 @@ async function getPrice() {
     else {
         PriceFeed_Source = 0;
     }
-    PriceFeed_Source = PriceFeed_Source+1;
 
     let currPrice = await Beans.getPrice(dex)
     
