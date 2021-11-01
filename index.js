@@ -24,7 +24,6 @@
 
  'use strict'
 
- const auth = require('./auth.json');
  const Discord = require('discord.js');
  const rp = require('request-promise');
  const Beans = require('./Beans')
