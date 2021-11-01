@@ -9,6 +9,9 @@ const { SolarBeam } = require('./Movr')
 async function getPrice(dex) {
 
     let MOVR_BEANS_LP = '0x12d4c0301bd491657fcd4d895b51bce36c30589b' // SolarBeam
+    let reverse = false; 
+    let BeansAmount;
+    let MovrAmount;
 
     switch(dex) {
         case 'MoonSwap' :
@@ -19,13 +22,19 @@ async function getPrice(dex) {
             break;    
         case 'Sushi' :
             MOVR_BEANS_LP = `0x2b5e714d52860500e6502b29b5df5fb41cb51012`    
+            reverse = true; 
             break; 
         default :   
         // DEFAULT: Use the SolarBeam LP defined above
     }
 
     const MovrBeansPair = new ethers.Contract(MOVR_BEANS_LP, PairABI, provider.movr)
-    const [MovrAmount, BeansAmount] = await MovrBeansPair.getReserves()
+    if (reverse) {
+        [BeansAmount, MovrAmount] = await MovrBeansPair.getReserves()
+    }
+    else {
+        [MovrAmount, BeansAmount] = await MovrBeansPair.getReserves()
+    }
 
     const MovrPrice = await Movr.getPrice()
     return (MovrAmount * MovrPrice) / BeansAmount
