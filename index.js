@@ -47,12 +47,13 @@ client.on('ready', () => {
         UPDATE_INTERVAL = parseInt(UPDATE_RATE)
     }
 
-    getPrice()
+    const dex = 'SolarBeam'
+    getPrice(dex)
     setInterval(getPrice, UPDATE_INTERVAL)
 })
 
-async function getPrice() {
-    let currPrice = await Beans.getPrice('SolarBeam')
+async function getPrice(dex) {
+    let currPrice = await Beans.getPrice(dex)
     showPrice(currPrice) // Update discord client display
 }
 
