@@ -52,14 +52,17 @@ client.on('ready', () => {
 })
 
 async function getPrice() {
-    let currPrice = await Beans.getPrice()
+    let currPrice = await Beans.getPrice('SolarBeam')
     showPrice(currPrice) // Update discord client display
 }
 
 function showPrice(currPrice) {
     let showPriceType = '$'
 
-    guildMeCache.forEach(guildMe => guildMe.setNickname(`${TICKER} : ${showPriceType}${currPrice}`))
+    guildMeCache.forEach(guildMe => 
+        guildMe.setNickname(`${TICKER} : ${showPriceType}${currPrice}`),
+        client.user.setActivity('SolarBeam')
+        )
 
     console.log(`${TICKER} $${currPrice} `)
 }
