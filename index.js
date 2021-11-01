@@ -47,25 +47,52 @@ client.on('ready', () => {
         UPDATE_INTERVAL = parseInt(UPDATE_RATE)
     }
 
-    const dex = 'SolarBeam'
-    getPrice(dex)
+    let PriceFeed_Source; 
+
+    getPrice()
     setInterval(getPrice, UPDATE_INTERVAL)
 })
 
-async function getPrice(dex) {
-    let currPrice = await Beans.getPrice(dex)
-    showPrice(currPrice) // Update discord client display
-}
 
-function showPrice(currPrice) {
+
+async function getPrice() {
+
+    let currPrice = await Beans.getPrice(dex)
     let showPriceType = '$'
 
+    let dex;
+
+    switch(PriceFeed_Source) {
+        case 0:
+            dex = 'SolarBeam';
+            break;
+        case 1:
+            dex = 'MoonSwap';
+            break;
+        case 2: 
+            dex = 'FreeRiver';
+            break;
+        case 3: 
+            dex = 'Sushi'
+        default:
+            dex = 'SolarBeam'
+        break
+    }
+
+    if (PriceFeed_Source < 3) {
+        PriceFeed_Source = PriceFeed_Source+1;
+    }
+    else {
+        PriceFeed_Source = 0;
+    }
+    PriceFeed_Source = PriceFeed_Source+1;
+
     guildMeCache.forEach(guildMe => 
-        guildMe.setNickname(`${TICKER} : ${showPriceType}${currPrice}`),
-        client.user.setActivity('SolarBeam', { type: 4}) 
+        guildMe.setNickname(`${showPriceType}${currPrice}`),
+        client.user.setActivity(`${dex}`, { type: 'WATCHING' })
     )
 
-    console.log(`${TICKER} $${currPrice} `)
+    console.log(`${TICKER} | ${dex} | \$${currPrice} `)
 }
 
 // New server join event that causes the guild cache to refresh
