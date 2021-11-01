@@ -87,11 +87,12 @@ async function getPrice() {
 
     let currPrice = await Beans.getPrice(dex)
     
-    guildMeCache.forEach(guildMe => 
-        guildMe.setNickname(`${showPriceType}${currPrice}`),
-        client.user.setActivity(`${dex}`, { type: 'WATCHING' }),
-        console.log(`${TICKER} | ${dex} | \$${currPrice} `),
-        console.log(`DISCORD: ${guildMe.nickname}`),
+    guildMeCache.forEach(guildMe => {
+            guildMe.setNickname(`${showPriceType}${currPrice}`);
+            client.user.setActivity(`${dex}`, { type: 'WATCHING' });
+            console.log(`${TICKER} | ${dex} | \$${currPrice} `);
+            console.log(`DISCORD: ${guildMe.nickname}`);
+        }
         
     )
 
