@@ -47,7 +47,7 @@ client.on('ready', () => {
         UPDATE_INTERVAL = parseInt(UPDATE_RATE)
     }
 
-    let PriceFeed_Source; 
+    let PriceFeed_Source = 0; 
 
     getPrice()
     setInterval(getPrice, UPDATE_INTERVAL)
