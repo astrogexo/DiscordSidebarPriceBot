@@ -33,6 +33,7 @@ let TICKER = process.env.TOKEN_SYMBOL
 let UPDATE_RATE = process.env.UPDATE_RATE // Price update interval in milliseconds
 let guildMeCache = []
 let UPDATE_INTERVAL
+let PriceFeed_Source = 0
 
 // Ready up activities
 client.on('ready', () => {
@@ -46,8 +47,6 @@ client.on('ready', () => {
     } else {
         UPDATE_INTERVAL = parseInt(UPDATE_RATE)
     }
-
-    let PriceFeed_Source = 0; 
 
     getPrice()
     setInterval(getPrice, UPDATE_INTERVAL)
