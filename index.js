@@ -77,6 +77,7 @@ async function getPrice() {
             break;
     }
 
+    console.log(`PriceFeed: ${PriceFeed_Source}`);
     if (PriceFeed_Source < 4) {
         PriceFeed_Source = PriceFeed_Source+1;
     }
