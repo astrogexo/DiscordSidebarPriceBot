@@ -35,7 +35,7 @@ let guildMeCache = []
 let UPDATE_INTERVAL
 
 // Ready up activities
-clients.on('ready', () => {
+client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`)
     client.user.setActivity(`😀`)
     client.guilds.cache.each(guild => guildMeCache.push(guild.me))
