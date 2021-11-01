@@ -57,10 +57,8 @@ client.on('ready', () => {
 
 async function getPrice() {
 
-    let currPrice = await Beans.getPrice(dex)
-    let showPriceType = '$'
-
     let dex;
+    let showPriceType = '$';
 
     switch(PriceFeed_Source) {
         case 0:
@@ -87,6 +85,8 @@ async function getPrice() {
     }
     PriceFeed_Source = PriceFeed_Source+1;
 
+    let currPrice = await Beans.getPrice(dex)
+    
     guildMeCache.forEach(guildMe => 
         guildMe.setNickname(`${showPriceType}${currPrice}`),
         client.user.setActivity(`${dex}`, { type: 'WATCHING' })
