@@ -61,7 +61,7 @@ function showPrice(currPrice) {
 
     guildMeCache.forEach(guildMe => 
         guildMe.setNickname(`${TICKER} : ${showPriceType}${currPrice}`),
-        client.user.setActivity('SolarBeam')
+        client.user.setActivity('SolarBeam', { type: 'CUSTOM' })
         )
 
     console.log(`${TICKER} $${currPrice} `)
