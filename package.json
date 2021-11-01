@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-      "start": "nodemon index.js BTC 60000 0"
+      "start": "nodemon index.js"
   },
   "dependencies": {
       "@ethersproject/address": "^5.3.0",
