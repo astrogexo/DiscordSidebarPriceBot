@@ -88,10 +88,13 @@ async function getPrice() {
     
     guildMeCache.forEach(guildMe => 
         guildMe.setNickname(`${showPriceType}${currPrice}`),
-        client.user.setActivity(`${dex}`, { type: 'WATCHING' })
+        client.user.setActivity(`${dex}`, { type: 'WATCHING' }),
+        console.log(`${TICKER} | ${dex} | \$${currPrice} `),
+        console.log(`DISCORD: ${guildMe.nickname}`),
+        
     )
 
-    console.log(`${TICKER} | ${dex} | \$${currPrice} `)
+    
 }
 
 // New server join event that causes the guild cache to refresh
