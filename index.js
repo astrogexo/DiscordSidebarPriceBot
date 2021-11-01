@@ -76,7 +76,7 @@ async function getPrice() {
         break
     }
 
-    if (PriceFeed_Source < 3) {
+    if (PriceFeed_Source < 4) {
         PriceFeed_Source = PriceFeed_Source+1;
     }
     else {
