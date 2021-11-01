@@ -54,7 +54,7 @@
      }
  );
  
- async function getPrice(): Promise<void> {   
+ async function getPrice() {   
  
      let currPrice = await Beans.getPrice();
      showPrice(currPrice); // Update discord bot display
